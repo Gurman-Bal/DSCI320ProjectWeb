@@ -42,7 +42,7 @@ alt.data_transformers.enable('json_dir')
 # See here: https://altair-viz.github.io/user_guide/data_transformers.html
 alt.data_transformers.disable_max_rows()
 
-alt.renderers.enable('jupyterlab')
+alt.renderers.enable('default')
 ------------------
 
 
