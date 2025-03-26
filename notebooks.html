@@ -415,7 +415,7 @@ document.write(`
 <span class="c1"># See here: https://altair-viz.github.io/user_guide/data_transformers.html</span>
 <span class="n">alt</span><span class="o">.</span><span class="n">data_transformers</span><span class="o">.</span><span class="n">disable_max_rows</span><span class="p">()</span>
 
-<span class="n">alt</span><span class="o">.</span><span class="n">renderers</span><span class="o">.</span><span class="n">enable</span><span class="p">(</span><span class="s1">&#39;jupyterlab&#39;</span><span class="p">)</span>
+<span class="n">alt</span><span class="o">.</span><span class="n">renderers</span><span class="o">.</span><span class="n">enable</span><span class="p">(</span><span class="s1">&#39;html&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -436,7 +436,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;../../data/processed/cleaned_games.csv&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;/workspaces/DSCI320ProjectWeb/website/data/processed/cleaned_games.csv&#39;</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -693,14 +693,74 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;VegaLite 5 object&gt;
+<div class="output text_html">
+<style>
+  #altair-viz-5952bdfb5e8744bbb665bf38b8fdeb83.vega-embed {
+    width: 100%;
+    display: flex;
+  }
 
-If you see this message, it means the renderer has not been properly enabled
-for the frontend that you are using. For more information, see
-https://altair-viz.github.io/user_guide/display_frontends.html#troubleshooting
-</pre></div>
-</div>
-</div>
+  #altair-viz-5952bdfb5e8744bbb665bf38b8fdeb83.vega-embed details,
+  #altair-viz-5952bdfb5e8744bbb665bf38b8fdeb83.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-5952bdfb5e8744bbb665bf38b8fdeb83"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-5952bdfb5e8744bbb665bf38b8fdeb83") {
+      outputDiv = document.getElementById("altair-viz-5952bdfb5e8744bbb665bf38b8fdeb83");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "hconcat": [{"vconcat": [{"data": {"name": "empty"}, "mark": {"type": "text"}, "encoding": {}, "name": "view_1"}, {"data": {"url": "altairdata/altair-data-40862e64d82dd3f56b990839a5657592.json", "format": {"type": "json"}}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "categories", "type": "nominal"}, "tooltip": {"aggregate": "count", "field": "categories", "type": "nominal"}, "x": {"aggregate": "count", "field": "categories", "type": "nominal"}, "y": {"field": "categories", "type": "nominal"}}, "name": "view_2", "title": "Total count of each category"}, {"data": {"url": "altairdata/altair-data-40862e64d82dd3f56b990839a5657592.json", "format": {"type": "json"}}, "mark": {"type": "arc"}, "encoding": {"color": {"condition": {"param": "param_1", "field": "categories", "type": "nominal"}, "value": "lightgray"}, "theta": {"aggregate": "count", "field": "categories", "type": "nominal"}, "tooltip": {"field": "categories", "type": "nominal"}}, "name": "view_3", "title": "Relative Size comparisons of Categories"}]}, {"data": {"url": "altairdata/altair-data-40862e64d82dd3f56b990839a5657592.json", "format": {"type": "json"}}, "mark": {"type": "line"}, "encoding": {"color": {"condition": {"param": "param_1", "field": "categories", "type": "nominal"}, "value": "lightgray"}, "tooltip": {"aggregate": "mean", "field": "review_score", "type": "quantitative"}, "x": {"field": "review_score", "title": "Review Scores", "type": "quantitative"}, "y": {"aggregate": "count", "field": "total_reviews", "title": "Total votes", "type": "quantitative"}}, "height": 500, "name": "view_4", "title": "Total amount of scores for each category", "transform": [{"filter": {"param": "categories"}}], "width": 700}], "params": [{"name": "categories", "select": {"type": "point", "fields": ["categories"]}, "bind": {"input": "select", "options": ["Single-player", "Multi-player", "PvP", "Co-op", "MMO", "Online Co-op", "Remote Play on TV", "Remote Play on Phone"], "name": "Select categories"}, "views": ["view_1", "view_4"]}, {"name": "param_1", "select": {"type": "point", "fields": ["categories"]}, "views": ["view_2", "view_3", "view_4"]}], "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"empty": [{}]}}, {"mode": "vega-lite"});
+</script></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -766,14 +826,74 @@ https://altair-viz.github.io/user_guide/display_frontends.html#troubleshooting
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;VegaLite 5 object&gt;
+<div class="output text_html">
+<style>
+  #altair-viz-3b9dc60a014e4e669a84e7afe2b80df3.vega-embed {
+    width: 100%;
+    display: flex;
+  }
 
-If you see this message, it means the renderer has not been properly enabled
-for the frontend that you are using. For more information, see
-https://altair-viz.github.io/user_guide/display_frontends.html#troubleshooting
-</pre></div>
-</div>
-</div>
+  #altair-viz-3b9dc60a014e4e669a84e7afe2b80df3.vega-embed details,
+  #altair-viz-3b9dc60a014e4e669a84e7afe2b80df3.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-3b9dc60a014e4e669a84e7afe2b80df3"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-3b9dc60a014e4e669a84e7afe2b80df3") {
+      outputDiv = document.getElementById("altair-viz-3b9dc60a014e4e669a84e7afe2b80df3");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "vconcat": [{"hconcat": [{"data": {"url": "altairdata/altair-data-d69631a51dde7ce96d2d09f5b22460f3.json", "format": {"type": "json"}}, "mark": {"type": "area"}, "encoding": {"color": {"field": "review_score", "type": "quantitative"}, "x": {"field": "catSize", "title": "Number of Categories", "type": "quantitative"}, "y": {"aggregate": "count", "field": "n_achievement", "title": "Total number of Achievements", "type": "quantitative"}}, "height": 300, "title": "Amount of Categories in Lowest 20000 Rated Games", "width": 300}, {"data": {"url": "altairdata/altair-data-50bab7523ee3596e9aae8ef5f51aeb10.json", "format": {"type": "json"}}, "mark": {"type": "area"}, "encoding": {"color": {"field": "review_score", "type": "quantitative"}, "x": {"field": "catSize", "title": "Number of Categories", "type": "quantitative"}, "y": {"aggregate": "count", "field": "n_achievement", "title": "Total number of Achievements", "type": "quantitative"}}, "height": 300, "title": "Amount of Categories in Lowest 20000 Rated Games", "width": 300}]}, {"data": {"url": "altairdata/altair-data-a3c97c1254ae150f41e892beb30fe169.json", "format": {"type": "json"}}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "review_score", "type": "quantitative"}, "x": {"field": "catSize", "title": "Number of Categories", "type": "quantitative"}, "y": {"aggregate": "count", "field": "n_achievement", "title": "Total number of Achievements", "type": "quantitative"}}, "height": 300, "name": "view_5", "title": "Distrabution of Category amount per Rating Score", "transform": [{"filter": {"param": "score_slider"}}], "width": 400}], "params": [{"name": "score_slider", "select": {"type": "point", "fields": ["review_score"]}, "bind": {"input": "range", "max": 9, "min": 0, "name": "Select Score", "step": 1}, "value": 5, "views": ["view_5"]}], "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json"}, {"mode": "vega-lite"});
+</script></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -844,14 +964,74 @@ https://altair-viz.github.io/user_guide/display_frontends.html#troubleshooting
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;VegaLite 5 object&gt;
+<div class="output text_html">
+<style>
+  #altair-viz-e67d9235794841f49a8a2f4b3ec97e24.vega-embed {
+    width: 100%;
+    display: flex;
+  }
 
-If you see this message, it means the renderer has not been properly enabled
-for the frontend that you are using. For more information, see
-https://altair-viz.github.io/user_guide/display_frontends.html#troubleshooting
-</pre></div>
-</div>
-</div>
+  #altair-viz-e67d9235794841f49a8a2f4b3ec97e24.vega-embed details,
+  #altair-viz-e67d9235794841f49a8a2f4b3ec97e24.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-e67d9235794841f49a8a2f4b3ec97e24"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-e67d9235794841f49a8a2f4b3ec97e24") {
+      outputDiv = document.getElementById("altair-viz-e67d9235794841f49a8a2f4b3ec97e24");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "vconcat": [{"data": {"url": "altairdata/altair-data-9a89bc0c23ddc8f8827713326f95ae78.json", "format": {"type": "json"}}, "facet": {"column": {"field": "Group", "title": null, "type": "nominal"}}, "spec": {"mark": {"type": "area", "opacity": 0.5}, "encoding": {"color": {"field": "Group", "type": "nominal"}, "tooltip": [{"field": "Group", "type": "nominal"}, {"field": "count", "type": "quantitative"}, {"field": "density", "type": "quantitative"}], "x": {"field": "count", "type": "quantitative"}, "y": {"field": "density", "type": "quantitative"}}, "transform": [{"density": "count", "groupby": ["Group"], "as": ["count", "density"]}]}, "title": "Density of Categories in Lowest and Highest preforming games"}, {"hconcat": [{"mark": {"type": "bar", "filled": true}, "encoding": {"color": {"condition": {"param": "param_2", "field": "score", "type": "quantitative"}, "value": "lightgray"}, "x": {"field": "count", "type": "quantitative"}, "y": {"field": "score", "type": "quantitative"}}, "name": "view_6", "title": "Scores vs number of categories"}, {"mark": {"type": "arc"}, "encoding": {"color": {"field": "count", "scale": {"scheme": "viridis"}, "type": "quantitative"}, "theta": {"field": "score", "type": "quantitative"}, "tooltip": {"field": "score", "type": "quantitative"}}, "title": "Difference in amount of Categories for each score"}], "data": {"url": "altairdata/altair-data-bd47cad5f3a8caf9a98c8afa67b881a5.json", "format": {"type": "json"}}}], "params": [{"name": "param_2", "select": {"type": "point", "fields": ["score"]}, "bind": {"input": "radio", "options": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], "name": "Scores"}, "views": ["view_6"]}], "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json"}, {"mode": "vega-lite"});
+</script></div></div>
 </div>
 
     <script type="text/x-thebe-config">
